@@ -1,0 +1,27 @@
+{% extends "eshop.html" %}
+{% load static %}
+{% block header %}
+<tr>
+
+</tr>
+<tr>
+
+</tr>
+{% endblock %}
+{% block content %}
+<div class="card" align="center">
+    <p align="center"></p>
+    <form id="regfield" action="{% url 'newuser' %}" method="post">
+        {% csrf_token %}
+            <label for="username"><b>Введите имя пользователя</b></label><br>
+            <input type="text" placeholder="ваше имя" name="username" id="username" required><br><br>
+            <label for="email"><b>Введите вашу почту</b></label><br>
+            <input type="text" placeholder="example@mail.com" name="email" id="email" required><br><br>
+            <label for="psw"><b>Введите ваш пароль</b></label><br>
+            <input type="password" placeholder="ваш пароль" name="psw" id="psw" required><br><br>
+            <label for="psw-repeat"><b>Повторите ваш пароль</b></label><br>
+            <input type="password" placeholder="повторить пароль" name="psw-repeat" id="psw-repeat" required><br><br>
+            <button type="submit" class="enterbtn">Зарегистрироваться</button>
+	</form>
+</div>
+{% endblock %}

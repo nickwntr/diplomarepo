@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<script src="login.js"></script>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/goods.css">
+		<meta charset="utf-8">
+		<title>Витрина</title>
+	</head>
+	<div class="header">
+		<table width="100%" id="tb1">
+			<tr>
+				<td width="50%">
+					<p align="left">Добро пожаловать на Технорынок</p>
+                    <p align="left">Магазин отличной бытовой техники</p>
+				</td>
+				<td width="15%" align="right">
+					<table width="100%" id="tb2" >
+                        <tr>
+							<td align="right" height="20px">
+                                <div id="logged" style="display: none"></div>
+                                <div id="logbox" style="display: block">Вы не зарегестрированы.</div>
+								<form onsubmit="return login();" id="logfield" style="display: none" >
+									  <div class="container">
+										<input type="text" placeholder="имя" name="username" id="username" required>
+										<input type="password" placeholder="пароль" name="psw" id="psw" required>
+										<button type="submit" class="enterbtn" onclick="login();">Войти</button>
+									  </div>
+								 </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <p id="reg" style="display: block"><a onclick="showlogin(); return false;" href="#">Войти</a> или <a href="/login/">Зарегестрироваться</a></p>
+                                <p id="exit" style="display: none"><a onclick="unlogin(); return false;" href="#">Выйти</a></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <button type="button" onclick="">Корзина</button>
+                            </td>
+                        </tr>
+                    </table>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<body onload="checkcookies();">
+		{% block content %}
+
+		{% endblock %}
+		<div class="footer">
+			<table align="center" width="10%">
+				<tr>
+					<td align="right">
+						<p align="left"><a href="/about/">О нас</a></p>
+					</td>
+					<td align="left">
+						<p align="right"><a href="/contacts/">Контакты</a></p>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
+<!--method="get"-->

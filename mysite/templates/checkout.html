@@ -1,0 +1,57 @@
+{% extends "eshop.html" %}
+{% load static %}
+{% block content %}
+Корзина:
+<ul align="center" style="list-style-type:none;" >
+    {% if cart %}
+            {% for item in cart.cartitem_set.all %}
+            <li>
+                    <div class="card">
+                        <table width="100%">
+                            <tr>
+                                <td width="150px" align="left">
+                                    {% if item.product.image %}
+                                        <img src="{{ item.product.image.url }}" width="150px" height="150px" alt="{{ item.product.name }}">
+                                    {% else %}
+                                        <img src="{% static 'img/broken.jpg' %}" width="150px" height="150px" alt="No Image Available">
+                                    {% endif %}
+                                </td>
+                                <td align="center">
+
+                                        <p align="center">{{item.product.type}} {{item.product.brand}} {{ item.product.name }}</p>
+                                        <p align="center">{{item.product.desc}}</p>
+                                </td>
+                                <td width="150px" align="right">
+                                    <div>
+                                        <form action="{% url 'update_item' item.id %}" method="post">
+                                                {% csrf_token %}
+                                                <input type="number" width="20px" name="quantity" value="{{ item.quantity }}" min="1" class="quantity-input">
+                                                <button type="submit" class="update-btn">Update</button>
+                                        </form>
+                                        <p>Итог: {{ item.total_price }} ₽</p>
+                                        <a href="{% url 'item_clear' item.product.id %}" class="btn-remove">Удалить из корзины</a>
+                                    </div>
+                                </td>
+
+
+
+
+                            </tr>
+                        </table>
+                    </div>
+                </li>
+            {% endfor %}
+            <div class="card" align="right">
+                <p>Итого: {{ total_price }} ₽</p>
+                <a href="{% url 'make_order' %}">Оформить</a>
+                <a href="/shop/" class="btn">Обратно</a>
+            </div>
+        {% else %}
+            <div class="card" align="right">
+                <p>Корзина пуста</p>
+                <a href="/shop/" class="btn">Обратно</a>
+            </div>
+        {% endif %}
+</ul>
+
+{% endblock %}

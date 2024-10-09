@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<script src="{% static 'js/login.js' %}"></script>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/goods.css' %}">
+		<meta charset="utf-8">
+		<title>Витрина</title>
+	</head>
+	<div class="header">
+		<table width="100%" id="tb1">
+			<tr>
+				<td width="30%">
+					<p align="left">Добро пожаловать на Технорынок</p>
+                    <p align="left">Магазин отличной бытовой техники</p>
+				</td>
+				<td width="15%" align="right">
+					<table width="100%" id="tb2">
+						{% block header %}
+                        <tr>
+								<td align="right" height="20px">
+									{% if User %}
+										<div id="logged">{{User}}</div>
+									{% else %}
+										<div id="logbox" style="display: block">Вы не зарегестрированы.</div>
+									{% endif %}
+									<form id="logfield" action="{% url 'login' %}" style="display: none" method="post">
+										{% csrf_token %}
+										  <div class="container">
+											<input type="text" placeholder="имя" name="username" id="username" required>
+											<input type="password" placeholder="пароль" name="psw" id="psw" required>
+											<button type="submit" class="enterbtn">Войти</button>
+										  </div>
+									 </form>
+								</td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+								{% if User %}
+                                	<p id="exit"><button><a href="{% url 'unlogin' %}">Выйти</a></button></p>
+								{% else %}
+                                	<p id="reg"><a onclick="showlogin(); return false;" href="#">Войти</a> или <a href="{% url 'regview' %}">Зарегестрироваться</a></p>
+								{% endif %}
+                            </td>
+                        </tr>
+						{% endblock %}
+                        <tr>
+                            <td align="right">
+								{% if isAdmin == 1 %}
+								<form action="{% url 'nitemview' %}">
+									<button type="submit">Добавление товарa</button>
+								</form>
+								{% endif %}
+								<a href="/cart/"><button>Корзина</button></a>
+                            </td>
+                        </tr>
+                    </table>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<body>
+		{% block content %}
+
+		{% endblock %}
+		<div class="footer">
+			<table align="center" width="10%">
+				<tr>
+					<td align="right">
+						<p align="left"><a href="/about/">О нас</a></p>
+					</td>
+					<td align="left">
+						<p align="right"><a href="/contacts/">Контакты</a></p>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

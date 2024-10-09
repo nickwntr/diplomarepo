@@ -1,0 +1,50 @@
+.header
+{
+    align-items: stretch;
+    text-align: center;
+    background-color: grey;
+    color: white;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+	border-style: solid;
+
+}
+body
+{
+    background-color: #EDDFE0;
+	background-size: 1920px 1080px;
+	background-attachment: fixed;
+}
+
+.card
+{
+    align-items: stretch;
+    border-style: solid;
+    border-width: 1px;
+	background-color: #f9f9f9;
+	border-radius: 5px;
+    margin-bottom: 25px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+button
+{
+	border-radius: 4px;
+	margin-bottom: 10px;
+}
+a{
+    text-decoration: none;
+}
+.footer
+{
+	background-color: grey;
+	color: white;
+	border-radius: 10px 10px 10px 10px;
+	border-style: solid;
+	text-align: center;
+	position: fixed;
+	left: 0;
+    bottom: 0;
+    width: 100%;
+}

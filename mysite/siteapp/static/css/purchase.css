@@ -1,0 +1,15 @@
+ .card {
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: sans-serif;
+  padding: 20px;
+  background-color: white;
+ 
+}
+body{
+    background-size: 1920px 1080px;
+    background-attachment: fixed;
+}
+a{
+    text-decoration: none;
+}
